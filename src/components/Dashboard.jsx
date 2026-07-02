@@ -194,7 +194,7 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
 
       {/* ── Responsive table: min-w-0 on parent prevents card from expanding beyond grid cell ── */}
       <div className={`overflow-x-auto rounded-xl border min-w-0 ${academicMode ? 'border-stone-200' : 'border-white/10'}`}>
-        <table className="w-full text-left text-sm whitespace-nowrap">
+        <table className="w-full table-fixed text-left text-sm">
           <thead
             className={`uppercase tracking-wider border-b ${
               academicMode
@@ -203,12 +203,12 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
             }`}
           >
             <tr>
-              <th className="px-6 py-4 font-semibold rounded-tl-xl">Subject</th>
-              <th className="px-6 py-4 font-semibold">Target (hrs)</th>
-              <th className="px-6 py-4 font-semibold">Logged (hrs)</th>
-              <th className="px-6 py-4 font-semibold">Remaining</th>
-              <th className="px-6 py-4 font-semibold">Avg Friction</th>
-              <th className="px-6 py-4 font-semibold rounded-tr-xl">Status</th>
+              <th className="px-3 py-3 font-semibold rounded-tl-xl w-[30%]">Subject</th>
+              <th className="px-3 py-3 font-semibold w-[13%]">Target (hrs)</th>
+              <th className="px-3 py-3 font-semibold w-[13%]">Logged (hrs)</th>
+              <th className="px-3 py-3 font-semibold w-[12%]">Remaining</th>
+              <th className="px-3 py-3 font-semibold w-[14%]">Avg Friction</th>
+              <th className="px-3 py-3 font-semibold rounded-tr-xl w-[18%]">Status</th>
             </tr>
           </thead>
           <tbody className={`divide-y ${academicMode ? 'divide-stone-100' : 'divide-white/10'}`}>
@@ -235,25 +235,25 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
                   key={sub.id}
                   className={`transition-colors duration-150 ${academicMode ? 'hover:bg-stone-50' : 'hover:bg-white/5'}`}
                 >
-                  <td className={`px-6 py-4 font-medium ${academicMode ? 'text-stone-800' : 'text-white'}`}>{sub.name}</td>
-                  <td className="px-6 py-4">
+                  <td className={`px-3 py-3 font-medium truncate ${academicMode ? 'text-stone-800' : 'text-white'}`}>{sub.name}</td>
+                  <td className="px-3 py-3">
                     <input
                       type="number"
                       min="0"
                       value={sub.targetHours}
                       onChange={(e) => updateTargetHours(sub.id, e.target.value)}
-                      className={`w-20 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 transition-shadow ${
+                      className={`w-16 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 transition-shadow ${
                         academicMode
                           ? 'bg-stone-100 border border-stone-300 text-stone-800 focus:ring-stone-400'
                           : 'bg-black/20 border border-white/10 text-white focus:ring-indigo-500'
                       }`}
                     />
                   </td>
-                  <td className={`px-6 py-4 font-semibold tabular-nums ${academicMode ? 'text-stone-700' : 'text-indigo-300'}`}>
+                  <td className={`px-3 py-3 font-semibold tabular-nums ${academicMode ? 'text-stone-700' : 'text-indigo-300'}`}>
                     {sub.loggedHours}
                   </td>
-                  <td className={`px-6 py-4 tabular-nums ${academicMode ? 'text-stone-600' : ''}`}>{remaining}</td>
-                  <td className="px-6 py-4">
+                  <td className={`px-3 py-3 tabular-nums ${academicMode ? 'text-stone-600' : ''}`}>{remaining}</td>
+                  <td className="px-3 py-3">
                     {avgFriction ? (
                       <span className={`text-xs font-semibold ${FRICTION_COLORS[avgFriction][academicMode ? 'academic' : 'digital']}`}>
                         {avgFriction}
@@ -262,9 +262,9 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
                       <span className={`text-xs ${academicMode ? 'text-stone-400' : 'text-white/30'}`}>—</span>
                     )}
                   </td>
-                  <td className="px-6 py-4">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${statusStyle}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${statusDot}`} />
+                  <td className="px-3 py-3">
+                    <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium border ${statusStyle}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${statusDot}`} />
                       {statusText}
                     </span>
                   </td>
