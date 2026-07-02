@@ -88,7 +88,7 @@ function App() {
 
       {/* ══ Sticky top navigation bar ══════════════════════════════════════════ */}
       <nav className={`sticky top-0 z-50 ${navBarBg}`}>
-        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+        <div className="max-w-screen-2xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
 
           {/* Brand */}
           <div className="flex items-center gap-3 shrink-0">
@@ -161,7 +161,7 @@ function App() {
       </nav>
 
       {/* ══ Page content ═══════════════════════════════════════════════════════ */}
-      <div className={`max-w-6xl mx-auto ${academicMode ? 'px-6 md:px-14 py-10' : 'px-6 md:px-12 py-10'}`}>
+      <div className={`max-w-screen-2xl mx-auto ${academicMode ? 'px-6 md:px-14 py-10' : 'px-6 md:px-12 py-10'}`}>
 
         {/* ── Dashboard view ── */}
         {activeView === 'dashboard' && (
@@ -190,8 +190,8 @@ function App() {
               </p>
             </header>
 
-            <main className="grid grid-cols-1 gap-8 xl:gap-12 lg:grid-cols-3 items-start">
-              <div className="lg:col-span-2 min-w-0">
+            <main className="grid grid-cols-1 gap-8 xl:gap-12 lg:grid-cols-4 items-start">
+              <div className="lg:col-span-3 min-w-0">
                 <Dashboard
                   subjects={subjects}
                   updateTargetHours={updateTargetHours}
