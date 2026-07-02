@@ -194,7 +194,7 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
 
       {/* ── Responsive table: min-w-0 on parent prevents card from expanding beyond grid cell ── */}
       <div className={`overflow-x-auto rounded-xl border min-w-0 ${academicMode ? 'border-stone-200' : 'border-white/10'}`}>
-        <table className="w-full table-fixed text-left text-sm">
+        <table className="w-full table-auto text-left text-sm">
           <thead
             className={`uppercase tracking-wider border-b ${
               academicMode
@@ -203,12 +203,12 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
             }`}
           >
             <tr>
-              <th className="px-3 py-3 font-semibold rounded-tl-xl w-[30%]">Subject</th>
-              <th className="px-3 py-3 font-semibold w-[13%]">Target (hrs)</th>
-              <th className="px-3 py-3 font-semibold w-[13%]">Logged (hrs)</th>
-              <th className="px-3 py-3 font-semibold w-[12%]">Remaining</th>
-              <th className="px-3 py-3 font-semibold w-[14%]">Avg Friction</th>
-              <th className="px-3 py-3 font-semibold rounded-tr-xl w-[18%]">Status</th>
+              <th className="px-3 py-3 font-semibold rounded-tl-xl w-[30%] text-left">Subject</th>
+              <th className="px-3 py-3 font-semibold w-[15%]">Target (hrs)</th>
+              <th className="px-3 py-3 font-semibold w-[15%]">Logged (hrs)</th>
+              <th className="px-3 py-3 font-semibold w-[15%]">Remaining</th>
+              <th className="px-3 py-3 font-semibold w-[15%]">Avg Friction</th>
+              <th className="px-3 py-3 font-semibold rounded-tr-xl w-[10%] text-center">Status</th>
             </tr>
           </thead>
           <tbody className={`divide-y ${academicMode ? 'divide-stone-100' : 'divide-white/10'}`}>
@@ -262,8 +262,8 @@ const Dashboard = ({ subjects, updateTargetHours, academicMode }) => {
                       <span className={`text-xs ${academicMode ? 'text-stone-400' : 'text-white/30'}`}>—</span>
                     )}
                   </td>
-                  <td className="px-3 py-3">
-                    <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium border ${statusStyle}`}>
+                  <td className="px-3 py-3 text-center">
+                    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border whitespace-nowrap ${statusStyle}`}>
                       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${statusDot}`} />
                       {statusText}
                     </span>
