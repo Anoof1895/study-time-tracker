@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import DailyLog from './components/DailyLog';
@@ -41,9 +41,23 @@ const NAV_TABS = [
 ];
 
 function App() {
-  const [subjects,     setSubjects]     = useState(initialSubjects);
+  const [subjects, setSubjects] = useState(() => {
+    try {
+      const saved = localStorage.getItem('studyTrackerData');
+      return saved ? JSON.parse(saved) : initialSubjects;
+    } catch {
+      return initialSubjects;
+    }
+  });
   const [academicMode, setAcademicMode] = useState(false);
   const [activeView,   setActiveView]   = useState('dashboard');
+
+  // Auto-save subjects to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('studyTrackerData', JSON.stringify(subjects));
+    } catch { /* ignore quota errors */ }
+  }, [subjects]);
 
   const updateTargetHours = (id, newTarget) => {
     setSubjects((prev) =>
